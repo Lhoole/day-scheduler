@@ -12,12 +12,10 @@ $(function () {
   $( textBox ).each( function(){
     var contentId = $(this).parent().attr('id')
     var newcontent = localStorage.getItem(contentId)
-    console.log(newcontent)
     if (newcontent !== null) {
       $(this).val(newcontent)
     }
   });
-  console.log(textBox)
   var today = dayjs();
   setInterval(function() { 
     today = dayjs();
@@ -41,10 +39,7 @@ if ($(this).attr("data-time") < today.hour()){
 
 });
 function savefn(){
-  console.log($(chosen).prev());
   time = ($(chosen).prev());
-  console.log($(time).val())
-  console.log($(time).parent().attr('id'))
   var timeslot = ($(time).parent().attr('id'))
   localStorage.setItem(timeslot, $(time).val());
 }
@@ -54,7 +49,6 @@ $(saveBtn).on('click', function (event) {
 });
 
 $(textBox).on('input', function handleChange(event) {
-  console.log(event.target.value);
   usertext = event.target.value
   event.target.textContent = usertext.trim()
 });
